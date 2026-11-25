@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Internet com Tranquilidade — Letramento Digital</title>
+  <meta name="description" content="Guia simples de segurança na internet para iniciantes e idosos: senhas fortes, como reconhecer golpes e navegar com tranquilidade.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fraunces:opsz,wght@9..144,600;9..144,800&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Atkinson Hyperlegible"', 'system-ui', 'sans-serif'],
+            display: ['Fraunces', 'Georgia', 'serif'],
+          },
+          colors: {
+            creme: '#FBF7F0',
+            tinta: '#1B2A3A',
+            mar: { 50: '#EAF4F4', 100: '#CFE6E6', 600: '#1F6F72', 700: '#175A5C', 800: '#12474A' },
+            sol: { 100: '#FDEFD3', 400: '#F2B544', 500: '#E59E1E' },
+            alerta: { 50: '#FDEDEC', 600: '#C0392B', 700: '#A12E22' },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    html { font-size: var(--base, 18px); scroll-behavior: smooth; }
+    :focus-visible { outline: 4px solid #E59E1E; outline-offset: 3px; border-radius: 6px; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+  </style>
+</head>
+<body class="bg-creme text-tinta font-sans leading-relaxed antialiased">
+
+  <a href="#conteudo" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 bg-sol-400 px-4 py-2 rounded-lg font-bold">Pular para o conteúdo</a>
+
+  <!-- Barra superior -->
+  <header class="sticky top-0 z-40 bg-creme/95 backdrop-blur border-b border-tinta/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-5 py-3 flex items-center justify-between gap-3">
+      <a href="#" class="flex items-center gap-2 min-w-0 font-display font-extrabold text-mar-800">
+        <span aria-hidden="true" class="shrink-0 inline-grid place-items-center w-10 h-10 rounded-xl bg-mar-700 text-creme text-2xl"><i class="ph-bold ph-key"></i></span>
+        <span class="text-base sm:text-xl leading-tight">Internet com <span class="block sm:inline">Tranquilidade</span></span>
+      </a>
+      <nav class="hidden md:flex gap-6 font-bold" aria-label="Seções">
+        <a href="#senhas" class="hover:text-mar-700 underline-offset-4 hover:underline">Senhas</a>
+        <a href="#golpes" class="hover:text-mar-700 underline-offset-4 hover:underline">Golpes</a>
+        <a href="#teste" class="hover:text-mar-700 underline-offset-4 hover:underline">Teste</a>
+        <a href="#resumo" class="hover:text-mar-700 underline-offset-4 hover:underline">Resumo</a>
+      </nav>
+      <div class="shrink-0 flex items-center gap-1" role="group" aria-label="Tamanho do texto">
+        <button id="menor" class="w-11 h-11 rounded-lg border-2 border-tinta/20 font-bold hover:bg-mar-50" aria-label="Diminuir texto">A−</button>
+        <button id="maior" class="w-11 h-11 rounded-lg border-2 border-tinta/20 font-bold text-lg hover:bg-mar-50" aria-label="Aumentar texto">A+</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- 1. Hero / Introdução -->
+    <section class="relative overflow-hidden">
+      <div class="max-w-6xl mx-auto px-5 pt-10 pb-16 md:pt-24 md:pb-28 grid md:grid-cols-2 gap-10 md:gap-12 items-center">
+        <div>
+          <p class="inline-block bg-sol-100 text-tinta font-bold px-4 py-1 rounded-full mb-5">Guia de letramento digital</p>
+          <h1 class="font-display font-extrabold text-4xl md:text-6xl leading-tight text-mar-800">
+            Navegue na internet com a mesma calma de quem tranca a porta de casa.
+          </h1>
+          <p class="mt-6 text-xl md:text-2xl max-w-xl">
+            A tecnologia ajuda a conversar com a família, cuidar das finanças e se divertir. Com alguns cuidados simples, ela fica segura também.
+          </p>
+          <div class="mt-9 flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <a href="#senhas" class="text-center bg-mar-700 hover:bg-mar-800 text-creme font-bold text-lg px-7 py-4 rounded-2xl shadow-lg shadow-mar-700/20 transition">Começar pelo básico</a>
+            <a href="#golpes" class="text-center border-2 border-mar-700 text-mar-800 hover:bg-mar-50 font-bold text-lg px-7 py-4 rounded-2xl transition">Como reconhecer golpes</a>
+          </div>
+        </div>
+
+        <!-- Ilustração: porta e chave -->
+        <div class="relative" aria-hidden="true">
+          <div class="absolute -top-8 -right-8 w-48 h-48 sm:w-72 sm:h-72 rounded-full bg-sol-100"></div>
+          <div class="relative bg-white rounded-[2rem] shadow-xl p-4 sm:p-8 border border-tinta/5 space-y-3 sm:space-y-4">
+            <div class="flex gap-3 sm:gap-4">
+              <div class="flex-1 min-w-0 bg-mar-50 rounded-2xl p-5 sm:p-6 flex flex-col justify-between gap-6 min-h-[170px] sm:min-h-[220px]">
+                <i class="ph-duotone ph-house-line text-5xl text-mar-700"></i>
+                <div>
+                  <p class="font-display font-semibold text-xl sm:text-2xl text-mar-800">Sua casa</p>
+                  <p class="text-lg">tem chave.</p>
+                </div>
+              </div>
+              <div class="shrink-0 w-20 sm:w-28 bg-sol-100 rounded-2xl grid place-items-center"><i class="ph-duotone ph-lock-key text-4xl sm:text-5xl text-sol-500"></i></div>
+            </div>
+            <div class="flex gap-3 sm:gap-4">
+              <div class="shrink-0 w-20 sm:w-28 bg-sol-100 rounded-2xl grid place-items-center"><i class="ph-duotone ph-device-mobile text-4xl sm:text-5xl text-sol-500"></i></div>
+              <div class="flex-1 min-w-0 bg-mar-700 text-creme rounded-2xl p-5 sm:p-6">
+                <p class="font-display font-semibold text-xl sm:text-2xl">Sua vida digital</p>
+                <p class="text-lg opacity-90">também precisa de uma.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vídeo -->
+    <section class="max-w-4xl mx-auto px-5 -mt-6 mb-20">
+      <h2 class="font-display font-semibold text-2xl md:text-3xl text-mar-800 mb-4 text-center">Assista ao vídeo completo</h2>
+      <div class="aspect-video rounded-3xl overflow-hidden bg-tinta shadow-xl">
+        <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/n07Nk0QhysY" title="Vídeo: Internet com Tranquilidade" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <p class="mt-3 text-center text-base opacity-80">5 minutos · senhas, golpes e dicas práticas</p>
+    </section>
+
+    <!-- 2. Senhas -->
+    <section id="senhas" class="bg-white py-20 scroll-mt-20">
+      <div class="max-w-6xl mx-auto px-5">
+        <p class="font-bold text-mar-700 text-lg">Parte 1</p>
+        <h2 class="font-display font-extrabold text-3xl md:text-5xl text-mar-800 mt-1">A senha é a chave da sua casa</h2>
+        <p class="mt-5 text-xl max-w-3xl">
+          Se alguém pega a chave da sua porta, entra quando quiser. Com a senha é igual: se ela fica exposta, outra pessoa consegue acessar sua conta do banco, seu e-mail ou seu WhatsApp.
+        </p>
+
+        <div class="mt-12 grid md:grid-cols-2 gap-6">
+          <!-- Evitar -->
+          <article class="rounded-3xl border-2 border-alerta-600/20 bg-alerta-50 p-6 sm:p-8">
+            <h3 class="flex items-center gap-3 font-display font-semibold text-2xl text-alerta-700">
+              <span aria-hidden="true" class="shrink-0 w-11 h-11 grid place-items-center rounded-full bg-alerta-600 text-white text-xl"><i class="ph-bold ph-x"></i></span>
+              O que evitar
+            </h3>
+            <ul class="mt-6 space-y-4 text-lg">
+              <li class="flex gap-3 items-start"><i class="ph-duotone ph-cake shrink-0 text-3xl text-alerta-600" aria-hidden="true"></i><span><strong>Datas de nascimento</strong> — suas ou da família.</span></li>
+              <li class="flex gap-3 items-start"><i class="ph-duotone ph-dog shrink-0 text-3xl text-alerta-600" aria-hidden="true"></i><span><strong>Nome do bichinho de estimação</strong> — muita gente sabe.</span></li>
+              <li class="flex gap-3 items-start"><i class="ph-duotone ph-list-numbers shrink-0 text-3xl text-alerta-600" aria-hidden="true"></i><span><strong>Sequências</strong> como <code class="bg-white px-2 py-0.5 rounded font-bold">123456</code> — são as primeiras que os golpistas tentam.</span></li>
+            </ul>
+          </article>
+
+          <!-- Fazer -->
+          <article class="rounded-3xl border-2 border-mar-600/20 bg-mar-50 p-6 sm:p-8">
+            <h3 class="flex items-center gap-3 font-display font-semibold text-2xl text-mar-800">
+              <span aria-hidden="true" class="shrink-0 w-11 h-11 grid place-items-center rounded-full bg-mar-700 text-white text-xl"><i class="ph-bold ph-check"></i></span>
+              Como criar uma senha forte
+            </h3>
+            <p class="mt-6 text-lg">Junte <strong>3 ou 4 palavras</strong> que façam sentido para você e misture números ou símbolos.</p>
+            <div class="mt-6 bg-white rounded-2xl p-5 border border-mar-600/20">
+              <p class="text-sm font-bold uppercase tracking-wider text-mar-700">Exemplo</p>
+              <p class="mt-2 text-2xl md:text-3xl font-bold break-all">
+                <span class="text-mar-700">café</span><span class="text-sol-500">bolo</span><span class="text-alerta-600">@</span><span class="text-mar-800">tarde</span>
+              </p>
+              <p class="mt-2 text-base opacity-80">Fácil de lembrar para você, difícil de adivinhar para os outros. (Não use este exemplo: crie o seu!)</p>
+            </div>
+          </article>
+        </div>
+
+        <!-- Boas práticas -->
+        <h3 class="mt-16 font-display font-semibold text-2xl md:text-3xl text-mar-800">Boas práticas</h3>
+        <div class="mt-6 grid sm:grid-cols-3 gap-6">
+          <div class="rounded-3xl bg-creme p-7">
+            <span class="inline-grid place-items-center w-14 h-14 rounded-2xl bg-mar-700 text-creme text-3xl" aria-hidden="true"><i class="ph-duotone ph-key"></i></span>
+            <h4 class="mt-4 font-bold text-xl">Uma senha para cada lugar</h4>
+            <p class="mt-2 text-lg">Banco, e-mail e redes sociais com senhas diferentes. Se uma vazar, as outras continuam protegidas.</p>
+          </div>
+          <div class="rounded-3xl bg-creme p-7">
+            <span class="inline-grid place-items-center w-14 h-14 rounded-2xl bg-mar-700 text-creme text-3xl" aria-hidden="true"><i class="ph-duotone ph-note-pencil"></i></span>
+            <h4 class="mt-4 font-bold text-xl">Nada de papel à vista</h4>
+            <p class="mt-2 text-lg">Evite bilhetes com senhas colados na geladeira, no monitor ou dentro da capinha do celular.</p>
+          </div>
+          <div class="rounded-3xl bg-creme p-7">
+            <span class="inline-grid place-items-center w-14 h-14 rounded-2xl bg-mar-700 text-creme text-3xl" aria-hidden="true"><i class="ph-duotone ph-vault"></i></span>
+            <h4 class="mt-4 font-bold text-xl">Use um cofre de senhas</h4>
+            <p class="mt-2 text-lg">O celular pode guardar suas senhas com segurança. Peça ajuda a alguém de confiança para configurar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Golpes -->
+    <section id="golpes" class="py-20 scroll-mt-20">
+      <div class="max-w-6xl mx-auto px-5">
+        <p class="font-bold text-mar-700 text-lg">Parte 2</p>
+        <h2 class="font-display font-extrabold text-3xl md:text-5xl text-mar-800 mt-1">Golpes e phishing: não morda a isca</h2>
+
+        <div class="mt-8 grid md:grid-cols-5 gap-8 items-center">
+          <div class="md:col-span-3">
+            <p class="text-xl">
+              <strong>Phishing</strong> vem de <em>fishing</em>, “pescar” em inglês. O golpista joga uma <strong>isca</strong> — uma mensagem falsa — e espera alguém morder.
+            </p>
+            <p class="mt-4 text-xl">A isca costuma chegar por SMS, e-mail ou WhatsApp, e quase sempre parece urgente.</p>
+          </div>
+          <div class="md:col-span-2 rounded-3xl bg-mar-700 text-creme p-8 text-center" aria-hidden="true">
+            <i class="ph-duotone ph-fish-simple text-7xl text-sol-400"></i>
+            <p class="mt-3 font-display font-semibold text-2xl">Mensagem falsa = isca</p>
+          </div>
+        </div>
+
+        <h3 class="mt-14 font-display font-semibold text-2xl md:text-3xl text-mar-800">Exemplos que aparecem todo dia</h3>
+        <div class="mt-6 grid md:grid-cols-3 gap-6">
+          <!-- SMS -->
+          <figure class="flex flex-col rounded-3xl bg-white shadow-md p-6 border border-tinta/5">
+            <figcaption class="font-bold text-lg flex items-center gap-3"><span class="shrink-0 inline-grid place-items-center w-10 h-10 rounded-xl bg-alerta-50 text-alerta-600 text-2xl" aria-hidden="true"><i class="ph-duotone ph-package"></i></span> SMS da “encomenda”</figcaption>
+            <div class="mt-4 mb-4 bg-gray-100 rounded-2xl rounded-tl-sm p-4 text-base">
+              Sua encomenda está retida. Pague a taxa de R$ 9,90 para liberar: <span class="underline text-blue-700">link-estranho.com</span>
+            </div>
+            <p class="mt-auto text-base"><strong class="text-alerta-700">Sinal de golpe:</strong> cobrança inesperada e link desconhecido.</p>
+          </figure>
+          <!-- E-mail -->
+          <figure class="flex flex-col rounded-3xl bg-white shadow-md p-6 border border-tinta/5">
+            <figcaption class="font-bold text-lg flex items-center gap-3"><span class="shrink-0 inline-grid place-items-center w-10 h-10 rounded-xl bg-alerta-50 text-alerta-600 text-2xl" aria-hidden="true"><i class="ph-duotone ph-envelope-simple"></i></span> E-mail do “banco”</figcaption>
+            <div class="mt-4 mb-4 bg-gray-100 rounded-2xl p-4 text-base">
+              <p class="font-bold">URGENTE: sua conta será bloqueada</p>
+              <p class="mt-1">Clique aqui em até 24 horas para evitar o bloqueio.</p>
+            </div>
+            <p class="mt-auto text-base"><strong class="text-alerta-700">Sinal de golpe:</strong> tom alarmista e prazo curto.</p>
+          </figure>
+          <!-- WhatsApp -->
+          <figure class="flex flex-col rounded-3xl bg-white shadow-md p-6 border border-tinta/5">
+            <figcaption class="font-bold text-lg flex items-center gap-3"><span class="shrink-0 inline-grid place-items-center w-10 h-10 rounded-xl bg-alerta-50 text-alerta-600 text-2xl" aria-hidden="true"><i class="ph-duotone ph-chat-circle-dots"></i></span> WhatsApp do “parente”</figcaption>
+            <div class="mt-4 mb-4 bg-[#DCF8C6] rounded-2xl rounded-tr-sm p-4 text-base ml-auto">
+              Oi, mãe! Troquei de número. Preciso de um Pix urgente, depois te explico.
+            </div>
+            <p class="mt-auto text-base"><strong class="text-alerta-700">Sinal de golpe:</strong> número novo pedindo dinheiro com pressa.</p>
+          </figure>
+        </div>
+
+        <!-- Gatilho da pressa -->
+        <div class="mt-14 rounded-3xl bg-sol-100 border-2 border-sol-400 p-6 md:p-10 flex flex-col md:flex-row gap-6 items-start">
+          <i class="ph-duotone ph-alarm shrink-0 text-6xl text-sol-500" aria-hidden="true"></i>
+          <div>
+            <h3 class="font-display font-semibold text-2xl md:text-3xl">O gatilho da pressa</h3>
+            <p class="mt-3 text-xl">Quase todo golpe tenta fazer você agir <strong>sem pensar</strong>. “Urgente”, “só hoje”, “em 24 horas”… Quando a mensagem aperta, é hora de <strong>desacelerar</strong>.</p>
+          </div>
+        </div>
+
+        <!-- Regras de ouro -->
+        <h3 class="mt-14 font-display font-semibold text-2xl md:text-3xl text-mar-800">Regras de ouro</h3>
+        <ol class="mt-6 grid md:grid-cols-3 gap-6">
+          <li class="rounded-3xl bg-white p-7 shadow-sm border border-tinta/5">
+            <span class="font-display font-extrabold text-5xl text-sol-500">1</span>
+            <p class="mt-2 text-xl font-bold">Nunca clique em links suspeitos.</p>
+          </li>
+          <li class="rounded-3xl bg-white p-7 shadow-sm border border-tinta/5">
+            <span class="font-display font-extrabold text-5xl text-sol-500">2</span>
+            <p class="mt-2 text-xl font-bold">Desconfie de mensagens que pedem pressa.</p>
+          </li>
+          <li class="rounded-3xl bg-white p-7 shadow-sm border border-tinta/5">
+            <span class="font-display font-extrabold text-5xl text-sol-500">3</span>
+            <p class="mt-2 text-xl font-bold">Na dúvida, ligue para o banco ou para a pessoa pelo número que você já conhece.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Mini teste -->
+    <section id="teste" class="bg-mar-800 text-creme py-20 scroll-mt-20">
+      <div class="max-w-3xl mx-auto px-5">
+        <h2 class="font-display font-extrabold text-3xl md:text-5xl">Vamos praticar?</h2>
+        <p class="mt-4 text-xl opacity-90">Leia a situação e escolha: é seguro ou é golpe?</p>
+
+        <div class="mt-10 bg-white text-tinta rounded-3xl p-6 md:p-10 shadow-2xl">
+          <p class="font-bold text-mar-700" id="contador">Pergunta 1 de 4</p>
+          <p class="mt-3 text-2xl font-bold" id="pergunta"></p>
+          <div class="mt-8 grid sm:grid-cols-2 gap-4">
+            <button data-resp="seguro" class="resp bg-mar-50 hover:bg-mar-100 border-2 border-mar-600 text-mar-800 font-bold text-xl py-5 rounded-2xl"><i class="ph-bold ph-check-circle align-[-0.15em]" aria-hidden="true"></i> É seguro</button>
+            <button data-resp="golpe" class="resp bg-alerta-50 hover:bg-red-100 border-2 border-alerta-600 text-alerta-700 font-bold text-xl py-5 rounded-2xl"><i class="ph-bold ph-flag align-[-0.15em]" aria-hidden="true"></i> É golpe</button>
+          </div>
+          <div id="feedback" class="mt-6 text-lg hidden rounded-2xl p-5" role="status" aria-live="polite"></div>
+          <button id="proxima" class="mt-6 hidden bg-mar-700 hover:bg-mar-800 text-creme font-bold text-lg px-7 py-4 rounded-2xl">Próxima →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Conclusão -->
+    <section id="resumo" class="py-20 scroll-mt-20">
+      <div class="max-w-6xl mx-auto px-5">
+        <h2 class="font-display font-extrabold text-3xl md:text-5xl text-mar-800 text-center">Para levar com você</h2>
+        <div class="mt-12 grid md:grid-cols-3 gap-6">
+          <div class="text-center rounded-3xl bg-white p-8 shadow-sm border border-tinta/5">
+            <span class="inline-grid place-items-center w-16 h-16 rounded-2xl bg-mar-50 text-mar-700 text-4xl" aria-hidden="true"><i class="ph-duotone ph-shield-check"></i></span>
+            <p class="mt-4 text-xl font-bold">Crie senhas fortes e diferentes para cada serviço.</p>
+          </div>
+          <div class="text-center rounded-3xl bg-white p-8 shadow-sm border border-tinta/5">
+            <span class="inline-grid place-items-center w-16 h-16 rounded-2xl bg-mar-50 text-mar-700 text-4xl" aria-hidden="true"><i class="ph-duotone ph-lock-simple"></i></span>
+            <p class="mt-4 text-xl font-bold">Mantenha suas senhas guardadas e protegidas.</p>
+          </div>
+          <div class="text-center rounded-3xl bg-white p-8 shadow-sm border border-tinta/5">
+            <span class="inline-grid place-items-center w-16 h-16 rounded-2xl bg-mar-50 text-mar-700 text-4xl" aria-hidden="true"><i class="ph-duotone ph-link-break"></i></span>
+            <p class="mt-4 text-xl font-bold">Nunca clique em links desconhecidos.</p>
+          </div>
+        </div>
+
+        <blockquote class="mt-16 max-w-3xl mx-auto text-center">
+          <p class="font-display font-semibold text-3xl md:text-4xl text-mar-800 leading-snug">
+            A internet é um espaço para todos. Errar faz parte do aprendizado, e pedir ajuda não é vergonha: é sabedoria.
+          </p>
+        </blockquote>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-tinta text-creme/90 py-10">
+    <div class="max-w-6xl mx-auto px-5 flex flex-col md:flex-row justify-between gap-4 text-base">
+      <p><strong class="text-creme">PEI · Letramento Digital</strong> — Multivix</p>
+      <p>Material educativo sobre uso seguro da internet.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Tamanho do texto (A− / A+)
+    (function () {
+      const root = document.documentElement;
+      let size = 18;
+      try { size = parseInt(localStorage.getItem('tamanhoTexto')) || 18; } catch (e) {}
+      const apply = () => {
+        root.style.setProperty('--base', size + 'px');
+        try { localStorage.setItem('tamanhoTexto', size); } catch (e) {}
+      };
+      apply();
+      document.getElementById('maior').onclick = () => { size = Math.min(size + 2, 26); apply(); };
+      document.getElementById('menor').onclick = () => { size = Math.max(size - 2, 14); apply(); };
+    })();
+
+    // Mini teste
+    (function () {
+      const perguntas = [
+        { t: 'Chega um SMS: “Sua encomenda está retida. Pague R$ 7,50 neste link para liberar.”', r: 'golpe',
+          e: 'Cobrança inesperada com link é uma isca clássica. Confira o rastreio só no site ou app oficial da loja ou dos Correios.' },
+        { t: 'Você quer ver seu saldo e abre o aplicativo do banco que já está instalado no seu celular.', r: 'seguro',
+          e: 'Usar o app oficial que você mesmo instalou é o caminho certo.' },
+        { t: 'Um número desconhecido diz ser seu neto e pede um Pix urgente porque “trocou de celular”.', r: 'golpe',
+          e: 'Ligue para o número antigo do seu neto antes de qualquer coisa. Pressa + dinheiro = sinal vermelho.' },
+        { t: 'Você cria a senha “cafébolo@tarde” só para o seu e-mail e outra diferente para o banco.', r: 'seguro',
+          e: 'Palavras combinadas com símbolo, e uma senha para cada serviço. Perfeito!' },
+      ];
+      let i = 0, acertos = 0;
+      const $ = (id) => document.getElementById(id);
+      const botoes = document.querySelectorAll('.resp');
+
+      function mostrar() {
+        $('contador').textContent = `Pergunta ${i + 1} de ${perguntas.length}`;
+        $('pergunta').textContent = perguntas[i].t;
+        $('feedback').className = 'mt-6 text-lg hidden rounded-2xl p-5';
+        $('proxima').classList.add('hidden');
+        botoes.forEach(b => { b.disabled = false; b.classList.remove('opacity-50'); b.hidden = false; });
+      }
+
+      botoes.forEach(b => b.addEventListener('click', () => {
+        const p = perguntas[i];
+        const certo = b.dataset.resp === p.r;
+        if (certo) acertos++;
+        botoes.forEach(x => { x.disabled = true; if (x !== b) x.classList.add('opacity-50'); });
+        const fb = $('feedback');
+        fb.className = 'mt-6 text-lg rounded-2xl p-5 ' + (certo ? 'bg-mar-50 text-mar-800' : 'bg-alerta-50 text-alerta-700');
+        fb.innerHTML = `<strong>${certo ? 'Muito bem!' : 'Quase!'}</strong> ${p.e}`;
+        const btn = $('proxima');
+        btn.textContent = i < perguntas.length - 1 ? 'Próxima →' : 'Ver resultado';
+        btn.classList.remove('hidden');
+        btn.focus();
+      }));
+
+      let fim = false;
+      $('proxima').addEventListener('click', () => {
+        if (fim) { fim = false; i = 0; acertos = 0; mostrar(); return; }
+        if (i < perguntas.length - 1) { i++; mostrar(); return; }
+        fim = true;
+        $('contador').textContent = 'Resultado';
+        $('pergunta').textContent = `Você acertou ${acertos} de ${perguntas.length}. ${acertos === perguntas.length ? 'Excelente!' : 'Cada erro aqui é um golpe evitado lá fora.'}`;
+        botoes.forEach(b => b.hidden = true);
+        $('feedback').classList.add('hidden');
+        const btn = $('proxima');
+        btn.textContent = 'Fazer de novo';
+      });
+
+      mostrar();
+    })();
+  </script>
+</body>
+</html>
